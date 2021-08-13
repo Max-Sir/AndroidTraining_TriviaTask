@@ -43,6 +43,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleImage" />
 
+        <EditText
+            android:layout_width="395dp"
+            android:layout_height="83dp"
+            android:id="@+id/editTextNumberQuestions"
+            android:hint="@string/how_many_questions_you_d_like_to_pass_through"
+            android:inputType="number"
+            app:layout_constraintBottom_toTopOf="@+id/playButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleImage" />
+
         <ImageView
             android:id="@+id/titleImage"
             android:layout_width="0dp"
