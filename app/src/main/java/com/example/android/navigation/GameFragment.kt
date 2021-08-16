@@ -17,14 +17,13 @@
 package com.example.android.navigation
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.example.android.navigation.databinding.FragmentGameBinding
 import kotlin.math.min
 import kotlin.random.Random
@@ -60,15 +59,15 @@ class GameFragment : Fragment() {
                     answers = listOf("<layout>", "<binding>", "<data-binding>", "<dbinding>"))
     )
 
-    lateinit var args:GameFragmentArgs
+//    lateinit var args:GameFragmentArgs
     lateinit var currentQuestion: Question
     lateinit var answers: MutableList<String>
     private var questionIndex = 0
-    private val numQuestions = min((questions.size + 1) / 2, Random.nextInt(1,140))
+    private val numQuestions = min((questions.size + 1) / 2, Random.nextInt(1,10))
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        args=GameFragmentArgs.fromBundle(arguments!!)
+//        args=GameFragmentArgs.fromBundle(arguments!!)
         // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<FragmentGameBinding>(
                 inflater, R.layout.fragment_game, container, false)
@@ -78,6 +77,7 @@ class GameFragment : Fragment() {
 
         // Bind this fragment class to the layout
         binding.game = this
+        setHasOptionsMenu(true)
 
         // Set the onClickListener for the submitButton
         binding.submitButton.setOnClickListener @Suppress("UNUSED_ANONYMOUS_PARAMETER")
@@ -130,5 +130,14 @@ class GameFragment : Fragment() {
         // and shuffle them
         answers.shuffle()
         (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.title_android_trivia_question, questionIndex + 1, numQuestions)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.just_menu,menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(item,view!!.findNavController()) || super.onOptionsItemSelected(item)
     }
 }

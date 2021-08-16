@@ -43,7 +43,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleImage" />
 
-        <EditText
+       <!-- <EditText
             android:layout_width="395dp"
             android:layout_height="83dp"
             android:id="@+id/editTextNumberQuestions"
@@ -53,7 +53,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleImage" />
-
+-->
         <ImageView
             android:id="@+id/titleImage"
             android:layout_width="0dp"

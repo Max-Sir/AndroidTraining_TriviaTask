@@ -25,11 +25,11 @@ class TitleFragment : Fragment() {
         )
         var questionNumber:Int
         binding.playButton.setOnClickListener {
-            questionNumber = binding.editTextNumberQuestions.text.let {
-                if (it.toString() != "") it.toString().toInt() else 5
-            }
+//            questionNumber = binding.editTextNumberQuestions.text.let {
+//                if (it.toString() != "") it.toString().toInt() else 5
+//            }
             it.findNavController()
-                .navigate(TitleFragmentDirections.actionTitleFragmentToGameFragment(questionNumber))
+                .navigate(TitleFragmentDirections.actionTitleFragmentToGameFragment())
         }
 
         setHasOptionsMenu(true)
